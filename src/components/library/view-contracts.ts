@@ -1,0 +1,26 @@
+import type { ReactNode } from "react";
+export type LibraryLayoutModel = {
+  entries: ReactNode;
+  query: string;
+  type: string;
+  sort: string;
+  favoritesOnly: boolean;
+  empty: boolean;
+  hasMaterials: boolean;
+  loading: boolean;
+  resultLabel: string;
+  draftLabel: string;
+  patternLabel: string;
+  catalogLabel: string;
+  resumeTitle: string;
+  onQuery(value: string): void;
+  onType(value: string): void;
+  onSort(value: string): void;
+  onSubject(value: string): void;
+  onLevel(value: string): void;
+  onToggleFavorites(): void;
+  onReset(): void;
+  onResume(): void;
+  subjectClass(value: string): string;
+  levelClass(value: string): string;
+};

@@ -1,0 +1,20 @@
+@import "./styles/base.css";
+@import "./styles/curriculum.css";
+@import "./styles/explore.css";
+@import "./styles/studio.css";
+@import "./styles/studio-slides.css";
+@import "./styles/refinements.css";
+@import "./styles/exam.css";
+@import "./styles/floating-ai.css";
+
+.math-keyboard-host {
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 3;
+  --keyboard-zindex: 1200;
+}
+.math-keyboard-host > .ML__keyboard { position: relative; }
+.math-keyboard-host > .ML__keyboard,
+.math-keyboard-host > .ML__keyboard > .MLK__backdrop {
+  height: calc(var(--_keyboard-height, 0px) + var(--_padding-top, 0px) + var(--_padding-bottom, 0px));
+}

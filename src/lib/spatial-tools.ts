@@ -1,0 +1,22 @@
+export const SPATIAL_TOOLS = {
+  edgePoint: { label: "Điểm trên cạnh", count: 1 },
+  distance: { label: "Đo độ dài", count: 2 },
+  midpoint: { label: "Trung điểm", count: 2 },
+  centroid: { label: "Trọng tâm tam giác", count: 3 },
+  parallel: { label: "Đường song song", count: 3 },
+  footLine: { label: "Hình chiếu lên đường", count: 3 },
+  footPlane: { label: "Hình chiếu lên mặt phẳng", count: 4 },
+  distancePlane: { label: "Khoảng cách điểm–mặt", count: 4 },
+  intersectionLines: { label: "Giao hai đường", count: 4 },
+  intersectionLinePlane: { label: "Giao đường–mặt", count: 5 },
+  intersectionPlanes: { label: "Giao hai mặt phẳng", count: 6 },
+  commonPerpendicular: { label: "Đoạn vuông góc chung", count: 4 },
+  angle: { label: "Đo góc ABC", count: 3 },
+  angleLinePlane: { label: "Góc đường–mặt", count: 5 },
+  anglePlanes: { label: "Góc hai mặt phẳng", count: 6 },
+  plane: { label: "Mặt phẳng qua ba điểm", count: 3 },
+  circumsphere: { label: "Mặt cầu qua bốn điểm", count: 4 },
+  section: { label: "Thiết diện qua ba điểm", count: 3 },
+  flatten: { label: "Tách hình thật của mặt", count: 3 },
+} as const;
+export type SpatialTool = keyof typeof SPATIAL_TOOLS;

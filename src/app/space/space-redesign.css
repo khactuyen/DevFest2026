@@ -1,0 +1,1251 @@
+/* MathCos learning workspace: focused editor, answer rail and readable steps.
+   Scoped to /space; graph geometry and the solution flow are unchanged. */
+.site-chrome-content:has(.solve-workspace) {
+  background: #f6f8f6;
+  min-height: calc(100dvh - 64px);
+}
+.solve-workspace {
+  --solve-ink: #193b30;
+  --solve-muted: #65796e;
+  --solve-accent: #176348;
+  --solve-border: #dfe9e2;
+  --solve-soft: #f1f8f4;
+  max-width: 1400px;
+  padding: 32px 32px 24px;
+  color: var(--solve-ink);
+}
+.solve-workspace button {
+  min-height: 40px;
+  padding: 9px 14px;
+  border-radius: 9px;
+  font-size: 13px;
+  font-weight: 550;
+  transition: none;
+}
+.solve-workspace button:hover {
+  background: #f1f8f4;
+  border-color: #91b8a5;
+}
+.solve-workspace button:disabled {
+  opacity: 0.55;
+}
+.solve-workspace .solve-primary {
+  background: var(--solve-accent);
+  border-color: var(--solve-accent);
+  color: #fff;
+  font-weight: 650;
+}
+.solve-workspace .solve-primary:hover {
+  background: #104a35;
+}
+.solve-workspace button:focus-visible,
+.solve-workspace a:focus-visible,
+.solve-workspace summary:focus-visible {
+  outline: 3px solid #7dcab2;
+  outline-offset: 3px;
+}
+.solve-workspace :is(select, textarea, input):focus-visible {
+  outline: 2px solid #27865f;
+  outline-offset: 3px;
+}
+.solve-workspace :is(h1, h2, h3) {
+  text-wrap: balance;
+}
+.solve-eyebrow {
+  display: block;
+  font-size: 11px;
+  line-height: 1.6;
+  font-weight: 650;
+  color: var(--solve-muted);
+}
+.solve-heading {
+  align-items: center;
+  margin-bottom: 28px;
+  gap: 20px;
+}
+.solve-heading-leading {
+  gap: 16px;
+  align-items: center;
+}
+.solve-title-block {
+  min-width: 0;
+}
+.solve-heading h1 {
+  margin: 3px 0 7px;
+  padding: 0;
+  border: 0;
+  font-size: 30px;
+  line-height: 1.25;
+  letter-spacing: normal;
+}
+.solve-heading .solve-title-block > p {
+  max-width: 600px;
+  font-size: 14px;
+  color: var(--solve-muted);
+}
+.solve-heading-actions {
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+.solve-heading-actions .solve-history-link {
+  display: inline-flex;
+  min-height: 40px;
+  align-items: center;
+  padding: 9px 12px;
+  border: 1px solid var(--solve-border);
+  background: #fff;
+}
+.solve-workspace .solve-flow-back {
+  background: #fff;
+  border-color: var(--solve-border);
+  color: var(--solve-muted);
+}
+.solve-more > summary,
+.solve-contents > summary {
+  min-height: 40px;
+  border-radius: 9px;
+  padding: 8px 11px;
+}
+.solve-progress {
+  max-width: none;
+  margin: 0 0 28px;
+  gap: 12px;
+}
+.solve-progress li {
+  padding: 14px 16px;
+  border: 1px solid var(--solve-border);
+  border-radius: 10px;
+  background: transparent;
+  gap: 11px;
+  color: var(--solve-muted);
+}
+.solve-progress li > span {
+  width: 28px;
+  height: 28px;
+  flex: 0 0 28px;
+  background: #eaf2ed;
+  font-variant-numeric: tabular-nums;
+}
+.solve-progress li strong {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+}
+.solve-progress li small {
+  display: block;
+  margin-top: 4px;
+  font-size: 10px;
+  font-weight: 400;
+}
+.solve-progress li[aria-current] {
+  background: #fff;
+  border-color: #bddbc9;
+  box-shadow: 0 1px 3px #193b3008;
+}
+.solve-progress li[aria-current] > span {
+  background: var(--solve-accent);
+  color: #fff;
+}
+.solve-error,
+.solve-notice {
+  max-width: none;
+  border-radius: 9px;
+  font-size: 13px;
+}
+.solve-input-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 24px;
+  align-items: start;
+}
+.solve-input-card,
+.solve-review-card {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  border: 1px solid var(--solve-border);
+  border-radius: 16px;
+  padding: 28px;
+  background: #fff;
+  box-shadow: 0 1px 3px #193b3008;
+}
+.solve-card-heading {
+  gap: 12px;
+  margin-bottom: 24px;
+  align-items: center;
+}
+.solve-step-number {
+  width: 32px;
+  height: 32px;
+  font-size: 13px;
+}
+.solve-card-heading h2 {
+  margin-bottom: 5px;
+  font-size: 23px;
+  line-height: 1.4;
+  letter-spacing: normal;
+}
+.solve-card-heading p {
+  max-width: 720px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.solve-input-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 4px;
+  padding: 5px;
+  margin: 0 0 24px;
+  border: 1px solid #e7eeea;
+  border-radius: 10px;
+  background: #f6f8f6;
+}
+.solve-input-tabs button {
+  min-height: 40px;
+  padding: 9px 7px;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  color: var(--solve-muted);
+  background: transparent;
+  font-size: 12px;
+}
+.solve-input-tabs button[aria-selected="true"] {
+  color: var(--solve-accent);
+  background: #fff;
+  border-color: #dce7e0;
+  box-shadow: 0 1px 3px #193b3008;
+}
+.solve-source-label {
+  margin: 0 0 10px;
+  font-size: 13px;
+  font-weight: 650;
+}
+.solve-source-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.solve-source-heading .solve-source-label { margin: 0; }
+.solve-workspace .solve-insert-formula {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 9px;
+  border: 1px solid #cbdcd1;
+  border-radius: 8px;
+  background: #fff;
+  color: var(--solve-accent);
+  font-size: 12px;
+  font-weight: 650;
+  cursor: pointer;
+}
+.solve-insert-formula:hover:not(:disabled) { background: #edf5f0; }
+.solve-formula-preview {
+  margin-top: 12px;
+  padding: 10px 12px;
+  border: 1px solid #dce7e0;
+  border-radius: 8px;
+  background: #f7fbf8;
+  overflow-x: auto;
+  overflow-wrap: anywhere;
+}
+.solve-formula-preview > strong {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--solve-muted);
+  font-size: 12px;
+}
+.solve-workspace textarea {
+  padding: 18px;
+  min-height: 175px;
+  border: 1px solid #cbdcd1;
+  border-radius: 12px;
+  background: #fff;
+  font-size: 18px;
+  line-height: 1.8;
+}
+.solve-workspace textarea::placeholder {
+  color: #86978d;
+  font-size: 16px;
+}
+.solve-editor-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 9px;
+  font-size: 11px;
+  line-height: 1.6;
+  color: var(--solve-muted);
+}
+.solve-editor-meta > span:last-child {
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+}
+.solve-options-row {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.4fr);
+  gap: 20px;
+  align-items: start;
+  margin-top: 26px;
+  padding-top: 22px;
+  border-top: 1px solid #e7eeea;
+}
+.solve-options-row .solve-question-picker {
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--solve-ink);
+  font-size: 12px;
+  font-weight: 650;
+}
+.solve-question-picker select {
+  display: block;
+  width: 100%;
+  min-height: 42px;
+  margin-top: 9px;
+  padding: 9px 11px;
+  border: 1px solid var(--solve-border);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--solve-ink);
+  font-size: 13px;
+  font-weight: 400;
+}
+.solve-options-row .solve-question-picker small {
+  display: block;
+  margin-top: 8px;
+  color: var(--solve-muted);
+  font-size: 11px;
+  line-height: 1.5;
+  font-weight: 400;
+}
+.solve-options-row .solve-mode-picker {
+  margin: 0;
+  gap: 8px;
+}
+.solve-mode-picker legend {
+  margin-bottom: 9px;
+  padding: 0;
+  font-size: 12px;
+  font-weight: 650;
+}
+.solve-mode-picker label {
+  padding: 12px 10px;
+  border-radius: 8px;
+  min-height: 92px;
+}
+.solve-mode-picker label.is-selected {
+  border-color: #91b8a5;
+  background: var(--solve-soft);
+}
+.solve-mode-picker strong {
+  font-size: 12px;
+}
+.solve-mode-picker small {
+  font-size: 11px;
+  line-height: 1.5;
+}
+.solve-input-footer {
+  margin-top: 24px;
+  gap: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e7eeea;
+}
+.solve-input-footer p {
+  max-width: 280px;
+  font-size: 11px;
+}
+.solve-input-footer > button {
+  min-height: 46px;
+  padding: 12px 20px;
+  font-size: 13px;
+}
+.solve-start-guide {
+  display: grid;
+  gap: 20px;
+}
+.solve-guide-card,
+.solve-example-card {
+  padding: 22px;
+  border: 1px solid var(--solve-border);
+  border-radius: 14px;
+  background: #fff;
+}
+.solve-guide-card {
+  background: #eef5f0;
+  border-color: #d8e6dc;
+}
+.solve-guide-card h2 {
+  max-width: 220px;
+  font-size: 25px;
+  line-height: 1.35;
+  margin: 7px 0 24px;
+}
+.solve-guide-route {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 18px 0;
+}
+.solve-guide-route > span {
+  display: flex;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #d8e6dc;
+  border-radius: 10px;
+  color: var(--solve-accent);
+  background: #fff;
+}
+.solve-guide-route h3 {
+  font-size: 13px;
+  margin: 0 0 5px;
+}
+.solve-guide-route p {
+  font-size: 12px;
+  color: #587068;
+  line-height: 1.7;
+  margin: 0;
+}
+.solve-guide-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  padding-top: 16px;
+  margin-top: 20px;
+  border-top: 1px solid #d8e6dc;
+  color: var(--solve-accent);
+}
+.solve-guide-note svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.solve-guide-note p {
+  font-size: 11px;
+  line-height: 1.6;
+  margin: 0;
+}
+.solve-aside-heading h3 {
+  font-size: 14px;
+  margin: 0 0 5px;
+}
+.solve-aside-heading > span {
+  font-size: 11px;
+  color: var(--solve-muted);
+}
+.solve-example-card .solve-examples {
+  display: grid;
+  gap: 0;
+  margin: 16px 0 0;
+  padding: 0;
+  border: 0;
+}
+.solve-example-card .solve-examples button {
+  display: flex;
+  width: 100%;
+  text-align: left;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 0;
+  border: 0;
+  border-top: 1px solid #e7eeea;
+  border-radius: 0;
+  background: transparent;
+}
+.solve-examples button > span {
+  display: block;
+  margin: 0;
+  color: var(--solve-ink);
+}
+.solve-examples button small {
+  display: block;
+  font-size: 10px;
+  color: var(--solve-muted);
+  margin-bottom: 5px;
+}
+.solve-examples button strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 550;
+}
+.solve-examples button > svg {
+  color: #789080;
+  flex-shrink: 0;
+}
+.solve-examples button:hover > svg {
+  color: var(--solve-accent);
+}
+.solve-source-outline {
+  margin: 0 0 24px;
+  padding: 20px;
+  background: #f8faf8;
+  border-radius: 10px;
+}
+.solve-source-outline .solve-question-type {
+  margin: 0 0 12px;
+  font-size: 12px;
+  color: var(--solve-muted);
+}
+.solve-source-outline > .formatted-ai-answer {
+  font-size: 19px;
+  line-height: 1.7;
+}
+.solve-review-main {
+  min-width: 0;
+}
+
+.solve-math-details {
+  font-size: 12px;
+  color: var(--solve-muted);
+  border-bottom: 1px solid #e7eeea;
+  padding-bottom: 16px;
+}
+.solve-math-details summary {
+  cursor: pointer;
+  padding: 8px 0;
+  color: #587068;
+}
+.solve-normalized {
+  background: #f8faf8;
+  border: 1px solid var(--solve-border);
+  padding: 12px;
+}
+.solve-problem-data {
+  gap: 18px;
+  font-variant-numeric: tabular-nums;
+}
+.solve-problem-data dt {
+  font-size: 11px;
+  text-transform: none;
+  letter-spacing: normal;
+}
+.solve-problem-data dd {
+  font-size: 13px;
+}
+.solve-review-main .solve-local-status {
+  margin: 16px 0;
+  padding: 11px 13px;
+  border: 0;
+  border-radius: 8px;
+  background: #f6f8f6;
+  color: var(--solve-muted);
+  font-size: 12px;
+}
+.solve-method-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 20px 0 16px;
+}
+.solve-method-heading h3 {
+  margin: 0;
+  font-size: 18px;
+}
+.solve-workspace .solve-method-heading button {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 36px;
+  padding: 6px 12px;
+  color: var(--solve-accent);
+}
+.solve-methods {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin: 0 0 18px;
+}
+.solve-methods button {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 20px;
+  border: 1px solid var(--solve-border);
+  border-radius: 12px;
+  background: #fff;
+}
+.solve-methods button:hover {
+  border-color: #91b8a5;
+  background: #fbfdfb;
+}
+.solve-method-card-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  min-height: 28px;
+}
+.solve-method-number {
+  display: inline-flex;
+  width: 28px;
+  height: 28px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #dfe9e2;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 650;
+  color: var(--solve-muted);
+  font-variant-numeric: tabular-nums;
+}
+.solve-method-card-top .solve-method-recommended {
+  margin-left: auto;
+  padding: 4px 7px;
+  font-size: 10px;
+}
+.solve-methods button > strong {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0 0 8px;
+  color: var(--solve-ink);
+}
+.solve-method-description {
+  font-size: 12px;
+  line-height: 1.75;
+  margin-bottom: 16px;
+}
+.solve-methods button > small {
+  display: block;
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid #e7eeea;
+  font-size: 11px;
+  line-height: 1.6;
+  color: var(--solve-accent);
+}
+.solve-method-plan {
+  font-size: 12px;
+  line-height: 1.7;
+}
+.solve-workspace .solve-back {
+  padding: 8px 0;
+  font-size: 12px;
+  color: var(--solve-muted);
+}
+.solve-phase-solution .solve-columns {
+  grid-template-columns: minmax(0, 1.4fr) minmax(330px, 1fr);
+  gap: 24px;
+}
+.solve-phase-solution .solve-columns.solve-without-visual {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 960px;
+}
+.solve-problem-sheet,
+.solve-steps-column,
+.solve-visual-column {
+  padding: 22px 24px;
+  border-radius: 14px;
+  border-color: var(--solve-border);
+  box-shadow: 0 1px 3px #193b3008;
+}
+.solve-problem-sheet {
+  padding-bottom: 4px;
+  margin-bottom: 18px;
+}
+.solve-sheet-heading {
+  margin-bottom: 12px;
+}
+.solve-sheet-heading h2,
+.solve-steps-head h2,
+.solve-visual-title h2 {
+  font-size: 16px;
+}
+.solve-reviewed {
+  border-radius: 20px;
+  padding: 4px 8px;
+  font-size: 10px;
+}
+.solve-original-source {
+  font-size: 16px;
+}
+.solve-source-meta {
+  gap: 8px;
+  font-size: 11px;
+}
+.solve-source-meta select {
+  border-radius: 7px;
+  min-height: 34px;
+}
+.solve-verified-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  margin: 0 0 12px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: #e8f5ed;
+  color: #176348;
+  font-size: 12px;
+  font-weight: 650;
+}
+.solve-check-panel {
+  padding: 22px 24px;
+  margin-bottom: 18px;
+  border: 1px solid #bddbc9;
+  border-radius: 14px;
+  background: #fff;
+}
+.solve-check-panel h3 {
+  font-size: 13px;
+}
+.solve-check-panel header p {
+  font-size: 12px;
+  margin-top: 5px;
+}
+.solve-answer-summary {
+  padding: 12px 16px;
+  margin: 16px 0;
+  gap: 24px;
+  border-radius: 10px;
+  background: #f1f8f4;
+}
+.solve-answer-summary .formatted-ai-display-math {
+  font-size: 28px;
+}
+.solve-check-details {
+  padding-top: 12px;
+  font-size: 12px;
+}
+.solve-root-check {
+  border-radius: 9px;
+}
+.solve-steps-head {
+  margin-bottom: 12px;
+}
+.solve-step-instruction {
+  font-size: 11px;
+  margin-bottom: 16px;
+}
+.solve-step-controls {
+  padding: 10px 0;
+  gap: 8px;
+  top: 64px;
+}
+.solve-step-controls button {
+  min-height: 34px;
+  font-size: 12px;
+  padding: 7px 10px;
+}
+.solve-step-card {
+  padding: 20px;
+  border-radius: 12px;
+  border-color: #e4ece6;
+  margin: 14px 0;
+}
+.solve-step-card.is-active {
+  background: #fbfdfb;
+  border-color: #91b8a5;
+  box-shadow: inset 3px 0 #176348;
+}
+.solve-step-card .formatted-ai-answer {
+  font-size: 15px;
+  line-height: 1.85;
+}
+.solve-step-card .formatted-ai-display-math {
+  font-size: 23px;
+}
+.solve-workspace .solve-step-select {
+  font-size: 15px;
+}
+.solve-workspace .solve-step-explain {
+  min-height: 34px;
+  padding: 7px 10px;
+  border-radius: 7px;
+  font-size: 10px;
+}
+.solve-support-actions {
+  padding-top: 10px;
+}
+.solve-support-actions button {
+  font-size: 11px;
+  min-height: 32px;
+  padding: 6px;
+}
+.solve-visual-column {
+  position: sticky;
+  top: 88px;
+  padding: 18px;
+}
+.solve-visual-step {
+  margin-bottom: 18px;
+  padding: 12px 14px;
+  border-radius: 9px;
+  background: #f6f8f6;
+}
+.solve-visual-column .math-board {
+  height: clamp(340px, 52vh, 560px);
+}
+.solve-visual-note {
+  font-size: 11px;
+  line-height: 1.75;
+  color: var(--solve-muted);
+}
+.solve-workspace .solve-icon-button {
+  width: 34px;
+  min-height: 34px;
+  padding: 6px;
+  border-radius: 8px;
+}
+.solve-visual-title {
+  align-items: center;
+  margin-bottom: 14px;
+}
+.solve-zoom {
+  display: flex;
+  gap: 4px;
+}
+.solve-zoom .solve-icon-button {
+  width: 30px;
+  min-height: 30px;
+  padding: 5px;
+}
+.solve-contents .solve-step-nav button {
+  border-radius: 6px;
+}
+.solve-result-status {
+  padding: 20px 24px;
+  border-radius: 12px;
+}
+.solve-result-status h3 {
+  font-size: 15px;
+}
+.solve-decision-panel {
+  border-radius: 12px;
+  padding: 22px;
+  background: #f6faf7;
+}
+.solve-decision-panel > header h3 {
+  font-size: 17px;
+}
+.solve-probability-row {
+  border-radius: 9px;
+  padding: 14px;
+}
+.solve-statement-decisions > li {
+  border-radius: 10px;
+}
+.solve-deep-action {
+  border-radius: 12px;
+}
+.solve-page-foot {
+  margin-top: 24px;
+  padding-top: 18px;
+  padding-bottom: 24px;
+  font-size: 11px;
+  color: var(--solve-muted);
+}
+@media (max-width: 1100px) {
+  .solve-workspace {
+    padding: 24px;
+  }
+  .solve-input-layout {
+    grid-template-columns: minmax(0, 1fr) 270px;
+    gap: 18px;
+  }
+  .solve-guide-card,
+  .solve-example-card {
+    padding: 18px;
+  }
+  .solve-options-row {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .solve-mode-picker label {
+    min-height: 0;
+  }
+  .solve-phase-solution .solve-columns {
+    grid-template-columns: minmax(0, 1.3fr) minmax(300px, 1fr);
+    gap: 18px;
+  }
+  .solve-problem-sheet,
+  .solve-steps-column {
+    padding: 18px;
+  }
+}
+@media (max-width: 850px) {
+  .solve-heading {
+    align-items: flex-start;
+  }
+  .solve-heading-actions {
+    max-width: 45%;
+  }
+  .solve-input-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .solve-start-guide {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .solve-review-main {
+    width: 100%;
+  }
+}
+@media (max-width: 740px) {
+  .solve-workspace {
+    padding: 20px 14px;
+  }
+  .solve-heading {
+    gap: 16px;
+    margin-bottom: 22px;
+  }
+  .solve-heading-leading {
+    gap: 10px;
+  }
+  .solve-heading h1 {
+    font-size: 25px;
+  }
+  .solve-heading .solve-title-block > p {
+    font-size: 12px;
+    line-height: 1.7;
+  }
+  .solve-eyebrow {
+    font-size: 10px;
+  }
+  .solve-workspace .solve-flow-back {
+    padding: 8px;
+    font-size: 11px;
+  }
+  .solve-heading-actions {
+    width: 100%;
+    max-width: none;
+    justify-content: flex-start;
+    gap: 7px;
+  }
+  .solve-heading-actions > .solve-history-link {
+    display: inline-flex;
+    margin-left: auto;
+  }
+  .solve-heading-actions > .solve-more {
+    margin-left: 0;
+  }
+  .solve-heading-actions > button,
+  .solve-more > summary {
+    min-height: 40px;
+  }
+  .solve-progress {
+    gap: 6px;
+    margin-bottom: 20px;
+  }
+  .solve-progress li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 10px 4px;
+    gap: 6px;
+  }
+  .solve-progress li > span {
+    margin: 0;
+    width: 25px;
+    height: 25px;
+    flex-basis: 25px;
+    font-size: 11px;
+  }
+  .solve-progress li strong {
+    font-size: 10px;
+    line-height: 1.5;
+  }
+  .solve-progress li small {
+    display: none;
+  }
+  .solve-input-card,
+  .solve-review-card {
+    padding: 20px 16px;
+    border-radius: 12px;
+  }
+  .solve-card-heading {
+    margin-bottom: 20px;
+    align-items: flex-start;
+  }
+  .solve-card-heading h2 {
+    font-size: 20px;
+  }
+  .solve-card-heading p {
+    font-size: 12px;
+  }
+  .solve-step-number {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+  }
+  .solve-input-tabs {
+    gap: 2px;
+    padding: 4px;
+    margin-bottom: 20px;
+  }
+  .solve-input-tabs button {
+    flex-direction: column;
+    gap: 5px;
+    padding: 8px 3px;
+    min-height: 58px;
+    font-size: 10px;
+  }
+  .solve-workspace textarea {
+    min-height: 155px;
+    padding: 14px;
+    font-size: 16px;
+  }
+  .solve-workspace textarea::placeholder {
+    font-size: 14px;
+  }
+  .solve-editor-meta {
+    font-size: 10px;
+  }
+  .solve-editor-meta > span:first-child {
+    max-width: 190px;
+  }
+  .solve-options-row {
+    margin-top: 22px;
+    padding-top: 20px;
+  }
+  .solve-mode-picker {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .solve-mode-picker label {
+    padding: 10px 8px;
+    gap: 7px;
+  }
+  .solve-mode-picker strong {
+    font-size: 11px;
+  }
+  .solve-mode-picker small {
+    font-size: 10px;
+  }
+  .solve-input-footer {
+    margin-top: 20px;
+    padding-top: 18px;
+    gap: 14px;
+  }
+  .solve-input-footer p {
+    max-width: none;
+  }
+  .solve-input-footer > button {
+    width: 100%;
+    min-height: 46px;
+  }
+  .solve-start-guide {
+    grid-template-columns: 1fr;
+  }
+  .solve-guide-card {
+    display: none;
+  }
+  .solve-example-card {
+    padding: 20px;
+  }
+  .solve-source-outline {
+    padding: 16px;
+    margin-bottom: 20px;
+  }
+  .solve-source-outline > .formatted-ai-answer {
+    font-size: 17px;
+  }
+  .solve-methods {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .solve-methods button {
+    padding: 18px;
+    min-height: 44px;
+  }
+  .solve-method-card-top {
+    margin-bottom: 12px;
+  }
+  .solve-methods button > strong {
+    font-size: 16px;
+  }
+  .solve-phase-solution .solve-columns {
+    display: block;
+  }
+  .solve-visual-column {
+    position: static;
+  }
+  .solve-mobile-tabs {
+    padding: 4px;
+    background: #eaf2ed;
+    border-radius: 10px;
+    gap: 4px;
+  }
+  .solve-mobile-tabs > button {
+    flex: 1;
+    border: 0;
+    background: transparent;
+  }
+  .solve-mobile-tabs > button[aria-selected="true"] {
+    background: #fff;
+    color: var(--solve-accent);
+    box-shadow: 0 1px 3px #193b3008;
+  }
+  .solve-problem-sheet,
+  .solve-steps-column,
+  .solve-check-panel,
+  .solve-result-status {
+    padding: 18px 16px;
+    border-radius: 12px;
+  }
+  .solve-problem-sheet {
+    padding-bottom: 4px;
+  }
+  .solve-steps-head {
+    gap: 12px;
+  }
+  .solve-reading-controls {
+    margin: 0;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .solve-step-controls {
+    gap: 6px;
+  }
+  .solve-step-controls > span {
+    font-size: 10px;
+  }
+  .solve-step-controls button {
+    min-height: 40px;
+    padding: 7px;
+    font-size: 11px;
+  }
+  .solve-step-card {
+    padding: 16px 14px;
+  }
+  .solve-step-card .formatted-ai-answer {
+    font-size: 15px;
+  }
+  .solve-workspace .solve-step-explain {
+    min-height: 40px;
+    font-size: 11px;
+  }
+  .solve-answer-summary {
+    padding: 10px;
+    gap: 12px;
+  }
+  .solve-answer-summary .formatted-ai-display-math {
+    font-size: 25px;
+  }
+  .solve-workspace .solve-icon-button {
+    min-height: 40px;
+    width: 40px;
+  }
+  .solve-zoom .solve-icon-button {
+    min-height: 32px;
+    width: 32px;
+  }
+  .solve-visual-column .math-board {
+    height: 380px;
+  }
+  .solve-page-foot {
+    font-size: 10px;
+    gap: 10px;
+    padding-bottom: 60px;
+  }
+}
+@media print {
+  .site-chrome-content:has(.solve-workspace) {
+    background: #fff;
+  }
+  .solve-workspace {
+    padding: 0;
+    max-width: none;
+  }
+}
+
+.solve-review-card {
+  max-width: 1120px;
+  margin-inline: auto;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  box-shadow: none;
+}
+.solve-review-card > .solve-card-heading {
+  padding: 8px 0 22px;
+  border-bottom: 1px solid var(--solve-border);
+}
+.solve-review-card > .solve-card-heading h2 {
+  font-size: 28px;
+}
+.solve-review-main {
+  padding: 26px;
+  border: 1px solid var(--solve-border);
+  border-radius: 16px;
+  background: #fff;
+}
+.solve-review-main .solve-source-outline {
+  margin: 0 0 22px;
+  padding: 0 0 22px;
+  border: 0;
+  border-bottom: 1px solid var(--solve-border);
+  border-radius: 0;
+  background: transparent;
+}
+.solve-review-main .solve-source-outline > strong {
+  display: block;
+  margin: 16px 0 8px;
+  font-size: 12px;
+  color: var(--solve-muted);
+}
+.solve-analysis-details {
+  margin-bottom: 18px;
+  padding: 14px 16px;
+  border: 1px solid var(--solve-border);
+  border-radius: 10px;
+  background: #f6f8f6;
+}
+.solve-analysis-details > summary {
+  cursor: pointer;
+  color: var(--solve-ink);
+  font-size: 13px;
+  font-weight: 600;
+}
+.solve-analysis-details[open] > summary {
+  margin-bottom: 18px;
+}
+.solve-review-main .solve-ai-facts {
+  grid-template-columns: 1fr;
+}
+.solve-ai-facts > div:has(ul:empty) {
+  display: none;
+}
+@media (max-width: 850px) {
+  .solve-review-card > .solve-card-heading h2 {
+    font-size: 24px;
+  }
+  .solve-review-main {
+    padding: 20px;
+  }
+}
+@media (max-width: 740px) {
+  .solve-review-main {
+    padding: 18px;
+  }
+}
+
+.solve-example-category {
+  display: grid;
+  gap: 8px;
+  margin-top: 18px;
+  color: var(--solve-muted);
+  font-size: 11px;
+}
+.solve-example-category select {
+  width: 100%;
+  min-height: 44px;
+  padding: 9px 10px;
+  border: 1px solid var(--solve-border);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--solve-ink);
+  font-size: 12px;
+}
+.solve-example-card .solve-examples strong {
+  overflow-wrap: anywhere;
+}

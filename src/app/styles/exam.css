@@ -1,0 +1,219 @@
+.exam-composer, .exam-preview { padding: 20px clamp(10px, 2.5vw, 34px) 40px; min-width: 0; }
+.gs-exam-stage-head, .gs-exam-stage-actions { width: min(840px, calc(100% - 32px)); margin-inline: auto; }
+.gs-exam-stage-head { margin-block: 22px 12px; }
+.gs-exam-stage-actions { margin-top: 0; padding-bottom: 28px; }
+.gs-exam-stage-head + :is(.exam-composer, .exam-preview) { padding-top: 0; }
+.gs-workflow .exam-preview { padding-bottom: 16px; }
+.exam-composer { display: grid; gap: 14px; align-items: start; }
+.exam-composer.exam-split { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.exam-compose-main, .exam-board-panel { min-width: 0; }
+.exam-board-panel { position: sticky; top: 72px; border: 1px solid #d8e5df; border-radius: 12px; overflow: auto; max-height: calc(100dvh - 90px); background: #fff; }
+.exam-board-panel .studio-board-workspace.explore-v2 .legacy-live-canvas .math-board-stage { height: clamp(300px, 49dvh, 620px); }
+.exam-board-panel .explore-v2 .explore-board-header { align-items: flex-start; }
+.exam-board-panel .explore-v2 .explore-v2-canvas-label { flex-basis: 100%; }
+.exam-board-panel .explore-v2 .explore-board-controls { justify-content: flex-start; margin-left: 0; }
+.exam-document-tools, .exam-preview-tools, .exam-quick-add {
+  max-width: 840px; margin: 0 auto 12px; padding: 10px 12px;
+  background: #fff; border: 1px solid #dbe7e0; border-radius: 10px;
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px;
+}
+.exam-document-tools label, .exam-preview-tools label, .exam-inline-tools label { display: flex; align-items: center; gap: 6px; }
+.exam-document-tools > strong { color: #204d3a; font-size: 13px; }
+.exam-document-tools select, .exam-preview-tools select, .exam-inline-tools select, .exam-quick-add select {
+  width: auto; padding: 5px 8px; border: 1px solid #d8e4dc; border-radius: 6px; background: white; font: inherit; color: #183d30;
+}
+.exam-preview-tools label { font-size: .82rem; font-weight: 600; }
+.exam-preview-tools p { width: 100%; margin: 0; color: #8c2520; }
+.exam-document-tools button, .exam-preview-tools button, .exam-inline-tools button, .exam-quick-add button,
+.exam-rich-toolbar button, .exam-question-bar button, .exam-add-question, .exam-edit-options button, .exam-upload {
+  display: inline-flex; align-items: center; justify-content: center; gap: 5px;
+  border: 1px solid #d9e4dc; border-radius: 6px; background: #fff; color: #174536;
+  padding: 5px 9px; cursor: pointer; font: 600 12px/1.3 "Be Vietnam Pro", Arial, sans-serif;
+}
+.exam-preview-tools button:first-of-type { background: #17533c; color: #fff; }
+.exam-document-tools :is(button, select), .exam-preview-tools :is(button, select) { min-height: 36px; }
+.exam-preview-tools button:disabled { opacity: .55; cursor: wait; }
+.exam-ai-tools { display: contents; }
+.exam-document-tools .exam-ai-toggle, .exam-document-tools .exam-ai-generate {
+  border-color: #15543e; background: #15543e; color: #fff;
+}
+.exam-ai-toggle { margin-left: auto; }
+.exam-ai-panel { flex: 1 1 100%; border-top: 1px solid #e1ebe4; padding-top: 12px; }
+.exam-ai-panel label { display: grid; gap: 5px; }
+.exam-ai-panel .exam-ai-source-file { margin-top: 8px; }
+.exam-ai-counts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin-top: 8px; }
+.exam-ai-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.exam-ai-hint, .exam-ai-status, .exam-ai-error { font-size: .82rem; line-height: 1.4; }
+.exam-ai-hint { color: #45665a; margin: 8px 0; }
+.exam-ai-status { flex: 1 1 100%; color: #17533c; margin: 0; }
+.exam-ai-error { color: #8c2520; }
+.exam-inline-tools .exam-ai-draw { background: #edf7f0; border-color: #bcd8c8; }
+.exam-figure-review { margin: 0; padding: 8px 12px; background: #edf7f0; color: #17533c; font-size: .82rem; }
+.exam-ai-label { margin-right: auto; color: #21634a; background: #edf7f0; border-radius: 12px; padding: 2px 7px; font-size: .72rem; }
+.exam-short-space { margin: 5px 0; }
+.exam-paper {
+  width: min(100%, 840px); min-height: min(1120px, 84dvh); margin: 0 auto; padding: clamp(20px, 4vw, 56px);
+  border: 1px solid #d9e3dd; border-radius: 4px; background: #fff; box-shadow: 0 8px 28px #253b2c12;
+  color: #19231d; line-height: 1.45; overflow-wrap: anywhere;
+}
+.exam-split .exam-paper { padding: clamp(14px, 2vw, 30px); }
+.exam-paper-header { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: 12px; margin-bottom: 20px; text-align: center; }
+.exam-paper-header div > span, .exam-paper-header div > strong { display: block; }
+.exam-paper-header h1 { font-family: inherit; font-size: 1.24em; margin: 0; line-height: 1.3; }
+.exam-paper-header p { grid-column: 1 / -1; margin: 0; text-align: left; font-size: .92em; }
+.exam-paper-header label { text-align: left; font: 600 11px/1.3 "Be Vietnam Pro", sans-serif; }
+.exam-paper-header input { border: 0; border-bottom: 1px dashed #c2d3c9; border-radius: 0; padding: 4px; font: 14px "Be Vietnam Pro", sans-serif; }
+.exam-header-fields { display: grid; grid-template-columns: 1.25fr .7fr .7fr; gap: 5px; margin-top: 5px; }
+.exam-part { margin: 13px 0; }
+.exam-part > h2 { color: inherit; font-family: inherit; font-size: 1em; font-weight: 700; line-height: 1.35; margin: 0 0 5px; text-transform: uppercase; }
+.exam-question-prompt { display: block; }
+.exam-question-prompt > strong { margin-right: .35em; }
+.exam-question-prompt > .exam-rich-prompt, .exam-question-prompt > .formatted-ai-answer { display: inline; }
+.exam-question-prompt .exam-rich-prompt p { margin: 0; }
+.exam-question-prompt .exam-rich-prompt p:first-child { display: inline; }
+.exam-sheet-question { padding: 3px 0 7px; }
+.exam-edit-question { border: 1px solid #e2ebe5; border-radius: 8px; margin: 7px 0; padding: 8px; }
+.exam-edit-question.is-active { border-color: #82b6a0; }
+.exam-edit-question.is-drop-target { outline: 2px solid #1f8b5f; background: #f0faf4; }
+.exam-question-bar, .exam-inline-tools, .exam-rich-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 5px; margin-bottom: 5px; }
+.exam-question-bar { justify-content: space-between; }
+.exam-question-bar > div { display: flex; gap: 3px; }
+.exam-question-bar button:disabled { opacity: .38; }
+.exam-rich-toolbar { padding: 4px; border: 1px solid #e4ece6; border-radius: 6px; background: #f8fbf8; }
+.exam-rich-toolbar button[aria-pressed="true"], .exam-edit-options button[aria-pressed="true"] { color: #fff; background: #196849; border-color: #196849; }
+.exam-prompt-editor .tiptap { border: 1px solid #e0e9e3; border-radius: 6px; padding: 6px 8px; min-height: 46px; }
+.exam-prompt-editor .tiptap:focus { outline: 2px solid #85b9a0; }
+.exam-prompt-editor .tiptap p, .exam-rich-prompt p { margin: 0 0 .25em; }
+.exam-prompt-editor .tiptap p:last-child, .exam-rich-prompt p:last-child { margin: 0; }
+.exam-formula-backdrop {
+  position: fixed; inset: 0; z-index: 1120; display: grid; place-items: center;
+  padding: 12px 12px calc(12px + var(--exam-keyboard-height, 0px));
+  box-sizing: border-box; background: #102d2255;
+}
+.exam-formula-dialog {
+  display: flex; flex-direction: column; width: min(530px, 100%); min-height: 0;
+  max-height: calc(100dvh - 24px - var(--exam-keyboard-height, 0px));
+  overflow: hidden; border: 1px solid #d9e7dd; border-radius: 14px;
+  background: #fff; color: #174536; box-shadow: 0 18px 52px #102d2240;
+}
+.exam-formula-dialog > :is(header, footer) {
+  display: flex; flex-shrink: 0; align-items: center; gap: 8px; padding: 9px 14px;
+}
+.exam-formula-dialog > header { justify-content: space-between; border-bottom: 1px solid #e3ede6; }
+.exam-formula-dialog h2 { margin: 0; font-size: 1rem; }
+.exam-formula-dialog > footer { justify-content: flex-end; border-top: 1px solid #e3ede6; }
+.exam-formula-dialog button {
+  display: inline-flex; align-items: center; gap: 5px; padding: 6px 9px; border: 1px solid #d9e4dc;
+  border-radius: 6px; background: #fff; color: inherit; font: inherit; font-size: .82rem; cursor: pointer;
+}
+.exam-formula-dialog .exam-formula-apply { background: #15543e; color: #fff; }
+.exam-formula-dialog button:disabled { opacity: .5; cursor: not-allowed; }
+.exam-formula-panel { min-height: 0; overflow: auto; overscroll-behavior: contain; padding: 10px 14px; background: #f4f9f5; }
+.exam-formula-panel .math-input { min-height: 42px; }
+.exam-source-review { max-width: 840px; margin: 0 auto 12px; }
+.exam-source-layout-note { color: #765022; font-size: .8rem; line-height: 1.5; }
+.exam-preview-tools .exam-source-layout-note { flex-basis: 100%; }
+.exam-formula-panel label { display: grid; gap: 4px; margin: 8px 0; font-size: .82rem; }
+.exam-formula-panel input { width: 100%; min-width: 0; padding: 6px 8px; }
+@media (max-height: 550px) {
+  .exam-formula-backdrop { padding: 4px 8px calc(4px + var(--exam-keyboard-height, 0px)); }
+  .exam-formula-dialog { max-height: calc(100dvh - 8px - var(--exam-keyboard-height, 0px)); }
+  .exam-formula-dialog > :is(header, footer), .exam-formula-panel { padding: 4px 8px; }
+  .exam-formula-backdrop.is-keyboard-open .exam-formula-shortcuts { display: none; }
+}
+.exam-equation-node, .exam-rich-prompt .formatted-ai-math { display: inline-block; vertical-align: middle; }
+.exam-equation-node math-field { pointer-events: none; }
+.exam-rich-toolbar select { width: auto; max-width: 100%; padding: 4px 6px; font-size: 12px; }
+.exam-equation-node.ProseMirror-selectednode { outline: 2px solid #75ad92; border-radius: 3px; }
+.exam-inline-tools { margin-top: 6px; font-size: 11px; }
+.exam-inline-tools label { white-space: nowrap; }
+.exam-inline-tools input[type="range"] { width: 80px; padding: 0; }
+.exam-inline-tools input[type="checkbox"] { width: auto; accent-color: #196849; }
+.exam-upload { position: relative; overflow: hidden; }
+.exam-upload input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.exam-sheet-options, .exam-edit-options { display: grid; grid-template-columns: repeat(var(--exam-columns), minmax(0, 1fr)); gap: 3px 10px; margin: 3px 0; }
+.exam-sheet-options > div, .exam-edit-options > div { display: flex; gap: 5px; align-items: baseline; min-width: 0; }
+.exam-edit-options button { flex-shrink: 0; align-self: stretch; white-space: nowrap; }
+.exam-edit-options textarea { width: 100%; min-width: 0; padding: 4px; border-radius: 4px; font: inherit; }
+.exam-edit-options select { width: auto; padding: 3px; font-size: 11px; }
+.exam-correct, .exam-answer { color: #176348; }
+.exam-answer .formatted-ai-answer { display: inline; }
+.exam-answer-editor { font: 12px "Be Vietnam Pro", sans-serif; margin-top: 7px; color: #47675a; }
+.exam-answer-editor label { margin: 6px 0; }
+.exam-add-question { border-style: dashed; color: #176348; }
+.exam-quick-add { margin: 12px auto 0; }
+.exam-quick-add label:first-child { flex: 1 1 300px; }
+.exam-figure { margin: 8px 0; min-width: 110px; max-width: 100%; }
+.exam-figure[data-align="center"] { margin-inline: auto; }
+.exam-figure[data-align="right"] { margin-left: auto; }
+.exam-figure > img { display: block; width: 100%; height: auto; }
+.exam-figure .visual-toolbar, .exam-figure .parameters, .exam-figure .visual-foot { display: none; }
+.exam-figure .visual-shell { background: #fff; }
+.exam-figure[data-background="transparent"] :is(.visual-shell, .math-board) { background: transparent; }
+.exam-figure[data-background="transparent"] .visual-shell { border-color: transparent; box-shadow: none; }
+.exam-figure[data-background="transparent"] .three-scene-label { background: transparent; border-color: transparent; box-shadow: none; }
+.exam-figure .math-board-stage { height: clamp(140px, 32vw, 310px); }
+.exam-figure .math-board { height: 100%; min-height: 0; }
+.exam-figure figcaption { font-size: .9em; text-align: center; }
+@media (max-width: 920px) {
+  .exam-composer.exam-split { grid-template-columns: 1fr; }
+  .exam-board-panel { position: sticky; order: -1; top: 56px; max-height: 58dvh; z-index: 62; }
+  .exam-board-panel .studio-board-workspace.explore-v2 .legacy-live-canvas .math-board-stage { height: 300px; }
+  .exam-edit-options { grid-template-columns: repeat(min(var(--exam-columns), 2), minmax(0, 1fr)); }
+}
+@media (max-width: 460px) {
+  .exam-ai-toggle { margin-left: 0; }
+  .exam-ai-counts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .exam-ai-counts label { font-size: .72rem; }
+  .exam-paper-header { grid-template-columns: 1fr; }
+  .exam-paper-header p { grid-column: 1; }
+  .exam-sheet-options { gap: 3px 4px; }
+  .exam-preview-tools > label { flex: 1 1 100%; justify-content: space-between; }
+  .exam-preview-tools > button { flex: 1 1 auto; }
+}
+@media print {
+  @page mathcos-exam { size: A4; margin: 15mm 18mm; }
+  body:has(.exam-print-surface) :is(.app-header, .topbar, .gs-topbar, .gs-progress, .gs-message, .gs-page > .gs-alert, .gs-exam-stage-head, .gs-exam-stage-actions, .exam-preview-tools, .site-footer) { display: none !important; }
+  body:has(.exam-print-surface),
+  body:has(.exam-print-surface) :is(.main-shell, .gs-page, .gs-layout, .exam-preview, .site-chrome-content) {
+    padding: 0; margin: 0; min-height: 0; background: #fff !important;
+  }
+  .exam-print-surface .exam-paper { page: mathcos-exam; width: 100%; min-height: 0; padding: 0; margin: 0; border: 0; box-shadow: none; }
+  .exam-print-surface .exam-paper-header { grid-template-columns: 1fr 1.25fr; }
+  .exam-print-surface .exam-paper-header p { grid-column: 1 / -1; }
+  .exam-print-surface .exam-part > h2 { break-after: avoid; }
+  .exam-print-surface .exam-sheet-question, .exam-print-surface .exam-figure { break-inside: avoid; }
+  .exam-print-surface .exam-figure { print-color-adjust: exact; }
+}
+.exam-source-compare { margin: 7px 0; }
+.exam-pdf-review { margin-top: 8px; padding: 10px; border: 1px solid #d8e6dd; border-radius: 9px; background: #f6faf7; font-family: "Be Vietnam Pro", Arial, sans-serif; font-size: 13px; }
+.exam-pdf-compare { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 12px; }
+.exam-pdf-compare > section { min-width: 0; padding: 8px; background: #fff; border-radius: 6px; overflow-wrap: anywhere; }
+.exam-pdf-compare > section > strong { display: block; margin-bottom: 8px; }
+.exam-crop-image { position: relative; width: 100%; }
+.exam-crop-image img { display: block; width: 100%; height: auto; }
+.exam-crop-overlay { position: absolute; inset: 0; cursor: crosshair; touch-action: none; overflow: hidden; }
+.exam-crop-overlay span { position: absolute; border: 2px solid #067457; box-shadow: 0 0 0 200vmax #16332960; pointer-events: none; }
+.exam-pdf-flags, .exam-crop-bounds { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.exam-pdf-flags { display: grid; grid-template-columns: repeat(auto-fit, minmax(126px, 1fr)); }
+.exam-pdf-review .exam-pdf-flags label { display: flex; align-items: flex-start; gap: 6px; width: auto; overflow-wrap: normal; }
+.exam-pdf-review .exam-pdf-flags input[type="checkbox"] { width: auto; min-width: 0; margin: 3px 0 0; flex: none; }
+.exam-pdf-review-note { display: grid; gap: 5px; margin-top: 10px; }
+.exam-pdf-review-note textarea { width: 100%; }
+.exam-crop-bounds input { width: 62px; }
+.exam-matrix { padding: 12px; margin: 10px 0; background: #fff; border: 1px solid #d8e6dd; border-radius: 9px; }
+.exam-matrix summary { cursor: pointer; color: #15523e; font-weight: 700; }
+.exam-matrix fieldset { margin: 8px 0; padding: 10px; border: 1px solid #d8e6dd; border-radius: 7px; }
+.exam-matrix-fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 8px; }
+.exam-matrix label { display: grid; gap: 4px; min-width: 0; }
+.exam-matrix :is(input,select,textarea), .exam-question-matrix select { width: 100%; border: 1px solid #cdded4; border-radius: 6px; padding: 6px; }
+.exam-code-list { display: grid; gap: 6px; padding: 0; margin: 8px 0; list-style: none; }
+.exam-code-settings { margin-top: 8px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); }
+.exam-code-list li { display: grid; grid-template-columns: minmax(120px, 280px) auto; justify-content: start; align-items: end; gap: 8px; }
+.exam-code-list a { padding: 7px 9px; border: 1px solid #cdded4; border-radius: 6px; color: #15523e; }
+.exam-code-level { margin: 8px 0; color: #15523e; }
+@media (max-width: 480px) {
+  .exam-code-list li { grid-template-columns: minmax(80px, 1fr) auto; justify-content: stretch; }
+  .exam-code-list a { grid-column: 1 / -1; justify-self: start; }
+}
+.exam-question-matrix { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; margin: 4px 0; }
